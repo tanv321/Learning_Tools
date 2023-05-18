@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import Routes from './Routes';
+
 import Exercise1Runner from './Exercise1Runner';
 
 function App() {
@@ -9,8 +11,8 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
+          <Routes />
         </p>
-        <Exercise1Runner />
       </header>
     </div>
   );
