@@ -10,9 +10,12 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          this will be rendered on all exercises so comment it out if you want <code>src/App.js</code> and save to reload.
           <Routes />
         </p>
+
+        <h1 style={{fontSize:"20px"}}> Check other Exercises </h1>
+        <a style = {{color : "orange", fontSize:"15px"}}  href="http://localhost:3000/hooks/exercise1">Exercise 1</a>
+        <a style = {{color : "orange", fontSize:"15px" }} href="http://localhost:3000/hooks/exercise2">Exercise 2</a>
       </header>
     </div>
   );
