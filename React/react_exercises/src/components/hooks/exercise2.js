@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-
+import { HorizontalBarrier } from './sharedComponents';
 
 export default function Exercise2 () {
     const [todos, setTodos] = useState([]);
     const [count, setCount] = useState(0);
 
-    
+
     const handleCheckboxChange = (todoId) => {
         // Update the todos state using the previous state
         setTodos((prevTodos) =>
@@ -28,11 +28,6 @@ export default function Exercise2 () {
         console.log(todos);
     };
 
-    const HorizontalBarrier = () => {
-        return (
-          <div style={{ borderTop: '50px solid #002', margin: '1px' }}></div>
-        );
-      };
 
     return (
         <div>
