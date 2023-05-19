@@ -9,9 +9,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        <h1>
           <Routes />
-        </p>
+        </h1>
 
         <h1 style={{fontSize:"20px"}}> Check other Exercises </h1>
         <a style = {{color : "orange", fontSize:"15px"}}  href="http://localhost:3000/hooks/exercise1">Exercise 1</a>
