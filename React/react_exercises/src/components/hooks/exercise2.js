@@ -44,7 +44,7 @@ export default function Exercise2 () {
             <input
                 type="checkbox"
                 checked={todo.completed}
-                onChange={() => handleCheckboxChange(todo.id)} // Replace "" with the appropriate function
+                onChange={() => handleCheckboxChange(todo.id)} 
             />
             <label style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
                 {todo.description}
