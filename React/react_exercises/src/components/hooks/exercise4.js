@@ -7,13 +7,25 @@ export default function Exercise4() {
     const [result, setResult] = useState('');
 
     const btnValues = [
-        ["C", "+-", "%", "/"],
+        ["A", "B", "C", "/"],
         [7, 8, 9, "X"],
         [4, 5, 6, "-"],
         [1, 2, 3, "+"],
-        [0, ".", "cos","="],
+        [0, "D", "E","="],
       ];
+    
+    const valueCapture = (value) => {
+      const value_clicked = value.target.textContent.trim()
 
+      if (value_clicked >= 0 && value_clicked <=9){
+        console.log(value_clicked);
+        setDisplayedNumber(value_clicked)
+
+      } else if (value_clicked === "+"){
+        
+      }
+      
+    }
     return (
         <div>
       <h1>Third exercise</h1>
@@ -26,11 +38,12 @@ export default function Exercise4() {
          on the screen when the "=" button is clicked.
       </h1>
       <HorizontalBarrier />
-       <h1>what is this</h1>
        {btnValues.map((row, rowIndex) => (
         <div key={rowIndex}>
           {row.map((value, columnIndex) => (
-            <button key={columnIndex}>{value}</button>
+            <button key={columnIndex}
+            onClick={valueCapture}> {value}
+            </button>
             
           ))}
         </div>
