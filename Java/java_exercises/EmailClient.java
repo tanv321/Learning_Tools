@@ -6,6 +6,7 @@ import java.util.ArrayList;
  The class should have methods to send an email, receive emails, and display the inbox.
   Enhance the class to include features such as organizing emails into folders, 
   searching for specific emails */
+  
 public class EmailClient {
 
     private List<String>  inbox;
