@@ -10,11 +10,11 @@ export default function Exercise4() {
     let [operator, setOperator] = useState(null);
 
     const btnValues = [
-        ["A", "B", "C", "/"],
+        ["C", "C", "C", "/"],
         [7, 8, 9, "*"],
         [4, 5, 6, "-"],
         [1, 2, 3, "+"],
-        [0, "D", "E","="],
+        [0, "C", "C","="],
       ];
     
      /* user select numbers we store that number in displayedNumber
@@ -23,9 +23,9 @@ export default function Exercise4() {
            user select "C" we clear the result*/
     const valueCapture = (value) => {
       const value_clicked = value.target.textContent.trim()
-
+      
       if (value_clicked >= 0 && value_clicked <=9){
-        
+
           if (operator != null){
             console.log("2displayednumber2+", displayedNumber2,"<---displayed number2")
             setDisplayedNumber2(displayedNumber2+value_clicked)
@@ -38,6 +38,13 @@ export default function Exercise4() {
 
       } else {
         console.log("operator is selected", value_clicked)
+        if (value_clicked == "C"){
+          setResult(0);
+          setOperator(null);
+          setDisplayedNumber('');
+          setDisplayedNumber2('')
+          return
+        }
         if (value_clicked != "="){
           setOperator(value_clicked);
         } else {
@@ -82,6 +89,12 @@ export default function Exercise4() {
           ))}
         </div>
       ))}
+
+      <h1 style={{ fontSize:"20px", color:"brown" }}> selected: {displayedNumber} </h1>
+      <h1 style={{ fontSize:"20px", color:"brown" }}> selected: {displayedNumber2} </h1>
+
+      {/* Render the result */}
+      <h2>Result: {result}</h2>
 
 
 
