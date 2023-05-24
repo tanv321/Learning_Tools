@@ -33,7 +33,7 @@ export default function Exercise4() {
 
           } else {
             setDisplayedNumber(displayedNumber+value_clicked);
-            console.log("displayednumber", displayedNumber);
+            console.log("displayednumberrrrrrrrrr", displayedNumber);
           }
 
       } else {
@@ -50,18 +50,36 @@ export default function Exercise4() {
         } else {
           if (operator != null){
           
-          let to_process = eval(`${displayedNumber}${operator[0]}${displayedNumber2}`);
+          const isDisplayedNumberEmpty = displayedNumber.length === 0;
+          let to_process;
+          if (isDisplayedNumberEmpty) {
+            let to_process = eval(`${result}${operator[0]}${displayedNumber2}`);
+            if (operator[0] != "/"){
+              setResult(result+to_process);
+            }
+            setOperator(null);
+            setResult(to_process);
+            setDisplayedNumber('');
+            setDisplayedNumber2('')
+            console.log("final1", result, displayedNumber, operator);
 
-          setResult(to_process);
-          setOperator(null);
-          setDisplayedNumber('');
-          setDisplayedNumber2('')
-          console.log("final", result, displayedNumber, operator);
+          }
+          else{
+            let to_process = eval(`${displayedNumber}${operator[0]}${displayedNumber2}`);
+            setOperator(null);
+            setResult(result+to_process);
+            setDisplayedNumber('');
+            setDisplayedNumber2('')
+            console.log("final2", result, displayedNumber, operator);
+
+          }
+          
+          // console.log("final", result, displayedNumber, operator);
           
           }
+
         }
         
-
       }
       
       console.log("everything", result, displayedNumber, operator);
@@ -90,8 +108,8 @@ export default function Exercise4() {
         </div>
       ))}
 
-      <h1 style={{ fontSize:"20px", color:"brown" }}> selected: {displayedNumber} </h1>
-      <h1 style={{ fontSize:"20px", color:"brown" }}> selected: {displayedNumber2} </h1>
+      <h1 style={{ fontSize:"20px", color:"green" }}> selected: {displayedNumber} </h1>
+      <h1 style={{ fontSize:"20px", color:"green" }}> selected: {displayedNumber2} </h1>
 
       {/* Render the result */}
       <h2>Result: {result}</h2>
