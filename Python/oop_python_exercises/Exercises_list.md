@@ -5,7 +5,7 @@
 - create a Python class called "Employee" that represents an employee. The class should have attributes for the employee's name, ID, and salary. Implement methods to give a raise to the employee, display the employee's information, and calculate the net salary after deducting taxes. Extend the class to include features like performance evaluation, employee benefits management, and generating detailed salary reports.
 
 # Exercise 3:
-- create a Python class called "Library" that represents a library. The class should have attributes for the library's name and a list of books. Implement methods to add a book, remove a book, and display the list of books available in the library. Enhance the class to include features such as managing book reservations, tracking borrowed books with due dates, and implementing a search system with advanced filtering options.
+- create a Python class called "Library" that represents a library. The class should have attributes for the library's name and a list of books. Implement methods to add a book, remove a book, and display the list of books available in the library. 
 
 # Exercise 4:
 - create a Python class called "Shape" that represents a generic shape. Create subclasses for specific shapes such as "Circle", "Triangle", and "Rectangle". Implement methods to calculate the area and perimeter of each shape. Extend the class to include advanced geometry operations, such as finding the intersection of two shapes, calculating the distance between shapes, and determining if a point is inside a shape.
