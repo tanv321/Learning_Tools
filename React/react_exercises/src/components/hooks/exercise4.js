@@ -27,17 +27,14 @@ export default function Exercise4() {
       if (value_clicked >= 0 && value_clicked <=9){
 
           if (operator != null){
-            console.log("2displayednumber2+", displayedNumber2,"<---displayed number2")
             setDisplayedNumber2(displayedNumber2+value_clicked)
             
 
           } else {
             setDisplayedNumber(displayedNumber+value_clicked);
-            console.log("displayednumberrrrrrrrrr", displayedNumber);
           }
 
       } else {
-        console.log("operator is selected", value_clicked)
         if (value_clicked == "C"){
           setResult(0);
           setOperator(null);
@@ -61,7 +58,6 @@ export default function Exercise4() {
             setResult(to_process);
             setDisplayedNumber('');
             setDisplayedNumber2('')
-            console.log("final1", result, displayedNumber, operator);
 
           }
           else{
@@ -70,11 +66,9 @@ export default function Exercise4() {
             setResult(result+to_process);
             setDisplayedNumber('');
             setDisplayedNumber2('')
-            console.log("final2", result, displayedNumber, operator);
 
           }
           
-          // console.log("final", result, displayedNumber, operator);
           
           }
 
@@ -82,7 +76,6 @@ export default function Exercise4() {
         
       }
       
-      console.log("everything", result, displayedNumber, operator);
       
     }
     return (
