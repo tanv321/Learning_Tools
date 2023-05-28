@@ -13,6 +13,8 @@ import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.ParseException;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
  
+import org.json.JSONObject;
+
 
 import java.util.Scanner;
 
@@ -38,17 +40,29 @@ public class WeatherApp {
         System.out.println("what location weather would you like to view?");
         String locationName = location.nextLine();
         infoRetrieve+=locationName;
-
+        location.close();
 
         String result = get(infoRetrieve);
         
         System.out.println(result);
+        System.out.println("Results below");
+
+
+
+        String country = extractCountry(result);
+        System.out.println("Country: " + country);
 
         
         
         
     }
 
+
+    private static String extractCountry(String json) {
+        JSONObject jsonObject = new JSONObject(json);
+        JSONObject locationObject = jsonObject.getJSONObject("location");
+        return locationObject.getString("country");
+    }
     public static String get(String url) {
         String resultContent = null;
         HttpGet httpGet = new HttpGet(url);
