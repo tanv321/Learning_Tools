@@ -43,14 +43,15 @@ public class WeatherApp {
         location.close();
 
         String result = get(infoRetrieve);
-        
-        System.out.println(result);
-        System.out.println("Results below");
-
+    
 
 
         String country = extractCountry(result);
-        System.out.println("Country: " + country);
+
+        String forcast = extractForcast(result);
+
+
+        System.out.println("In "+locationName+ " which is located In Country: " + country + " the weather is " + forcast);
 
         
         
@@ -62,6 +63,15 @@ public class WeatherApp {
         JSONObject jsonObject = new JSONObject(json);
         JSONObject locationObject = jsonObject.getJSONObject("location");
         return locationObject.getString("country");
+    }
+
+
+    private static String extractForcast(String json){
+        JSONObject jsonObject = new JSONObject(json);
+        JSONObject currentObject = jsonObject.getJSONObject("current");
+        JSONObject forcast = currentObject.getJSONObject("condition");
+        return forcast.getString("text");
+
     }
     public static String get(String url) {
         String resultContent = null;
