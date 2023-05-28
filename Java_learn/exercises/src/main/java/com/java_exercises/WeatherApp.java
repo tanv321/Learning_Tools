@@ -1,3 +1,5 @@
+package com.java_exercises;
+
 public class WeatherApp {
 
     /* Create a Java class called "WeatherApp" that represents a weather application. 

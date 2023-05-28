@@ -1,0 +1,7 @@
+{
+    "java.project.sourcePaths": [
+        "java_exercises",
+        "exercises/src/main/java/com/java_exercises"
+    ],
+    "java.configuration.updateBuildConfiguration": "automatic"
+}

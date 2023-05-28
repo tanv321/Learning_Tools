@@ -1,3 +1,4 @@
+package com.java_exercises;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class EmailClient {
 
 
     public static void main(String[] args) {
-        EmailClient emailClient = new EmailClient(new ArrayList<>(), new ArrayList<>());
+        EmailClient emailClient = new EmailClient(new ArrayList<String>(), new ArrayList<String>());
 
         sendEmail(emailClient,"Michael", "hey how are you");
         sendEmail(emailClient,"Johnny", "Are you free this weeknd");
