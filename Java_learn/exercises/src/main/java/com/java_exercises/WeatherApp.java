@@ -1,5 +1,21 @@
 package com.java_exercises;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
+
+import java.io.IOException;
+
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.core5.http.HttpEntity;
+import org.apache.hc.core5.http.ParseException;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
+ 
+
+import java.util.Scanner;
+
 public class WeatherApp {
 
     /* Create a Java class called "WeatherApp" that represents a weather application. 
@@ -9,6 +25,47 @@ public class WeatherApp {
     integration with external weather APIs, and supporting multiple locations. */
     
     public static void main(String[] args){
+        String envPath = "C:/Users/alamt/Documents/Programming_Projects";
+        Dotenv dotenv = Dotenv.configure()
+        .directory(envPath)
+        .ignoreIfMalformed() // 
+        .ignoreIfMissing()
+        .load();
 
+        String WeatherAPIKey = dotenv.get("API_KEY");
+        String infoRetrieve = "http://api.weatherapi.com/v1/current.json?key="+WeatherAPIKey+"&q=";
+        Scanner location = new Scanner(System.in);
+        System.out.println("what location weather would you like to view?");
+        String locationName = location.nextLine();
+        infoRetrieve+=locationName;
+
+
+        String result = get(infoRetrieve);
+        
+        System.out.println(result);
+
+        
+        
+        
+    }
+
+    public static String get(String url) {
+        String resultContent = null;
+        HttpGet httpGet = new HttpGet(url);
+        try (CloseableHttpClient httpclient = HttpClients.createDefault()) {
+            try (CloseableHttpResponse response = httpclient.execute(httpGet)) {
+                // Get status code
+                System.out.println(response.getVersion()); // HTTP/1.1
+                System.out.println(response.getCode()); // 200
+                System.out.println(response.getReasonPhrase()); // OK
+                HttpEntity entity = response.getEntity();
+                // Get response information
+                resultContent = EntityUtils.toString(entity);
+
+            }
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+        return resultContent;
     }
 }
