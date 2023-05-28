@@ -35,23 +35,32 @@ public class WeatherApp {
         .load();
 
         String WeatherAPIKey = dotenv.get("API_KEY");
-        String infoRetrieve = "http://api.weatherapi.com/v1/current.json?key="+WeatherAPIKey+"&q=";
+
         Scanner location = new Scanner(System.in);
-        System.out.println("what location weather would you like to view?");
+
+        while (true){
+        String infoRetrieve = "http://api.weatherapi.com/v1/current.json?key="+WeatherAPIKey+"&q=";
+        System.out.println("\n\n\nwhat location weather would you like to view? enter 'exit' to exit");
         String locationName = location.nextLine();
+        if (locationName.equals("exit")){
+            break;
+        }
         infoRetrieve+=locationName;
-        location.close();
+        
+        
 
         String result = get(infoRetrieve);
-    
-
 
         String country = extractCountry(result);
 
         String forcast = extractForcast(result);
 
+        System.out.println("\n\n\nIn "+locationName+ " which is located In Country: " + country + " the weather is " + forcast);        
 
-        System.out.println("In "+locationName+ " which is located In Country: " + country + " the weather is " + forcast);
+        
+    }
+
+    location.close();
 
         
         
@@ -79,16 +88,18 @@ public class WeatherApp {
         try (CloseableHttpClient httpclient = HttpClients.createDefault()) {
             try (CloseableHttpResponse response = httpclient.execute(httpGet)) {
                 // Get status code
-                System.out.println(response.getVersion()); // HTTP/1.1
-                System.out.println(response.getCode()); // 200
-                System.out.println(response.getReasonPhrase()); // OK
+                // System.out.println(response.getVersion()); // HTTP/1.1
+                // System.out.println(response.getCode()); // 200
+                // System.out.println(response.getReasonPhrase()); // OK
                 HttpEntity entity = response.getEntity();
                 // Get response information
                 resultContent = EntityUtils.toString(entity);
 
             }
+
         } catch (IOException | ParseException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
+            
         }
         return resultContent;
     }
