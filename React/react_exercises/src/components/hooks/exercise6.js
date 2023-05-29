@@ -7,20 +7,14 @@ import { HorizontalBarrier } from './sharedComponents';
 export default function Exercise6(){
 
 
-    const [message, setMessage] = useState('');
+    const [location, setLocation] = useState('');
 
-    useEffect(() => {
-        fetch('http://localhost:8000/api/data') // Make an HTTP GET request to the server's API endpoint
-          .then((response) => response.json())
-          .then((data) => {
-            console.log(data); // Log the received data to the console
-            setMessage(data.message); // Set the received message in the component state
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-          });
-      }, []);
-      
+    const locationCaptured = (event) => {
+        event.preventDefault();
+        const enteredLocation = event.target.elements.location.value;
+        console.log(enteredLocation);
+     }
+
   
     return (
 
@@ -33,7 +27,11 @@ export default function Exercise6(){
          Allow the user to input a different location to retrieve weather information dynamically.
         </h1>
         <HorizontalBarrier />
-        <h1>{message}</h1>
+        <form onSubmit={locationCaptured}>
+        <textarea style={{width: '400px' }} placeholder="Insert location to view the weather: Philadelphia" name="location"></textarea>
+        <button type="submit">Submit</button>
+        </form>
+
         </div>
     )
 }

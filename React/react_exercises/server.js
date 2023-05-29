@@ -2,13 +2,19 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 
-dotenv.config({ path: 'C:/Users/alamt/Documents/Programming_Projects' });
+dotenv.config({ path: 'C:/Users/alamt/Documents/Programming_Projects/.env'});
 
 
 const app = express();
 
 app.use(cors());
 
+let x = process.env.API_KEY
+console.log(x);
+
+app.get('/', (req, res) => {
+    res.send('Hello from the root path of the server side!');
+  });
 
 app.get('/api/data', (req, res) => {
     // Handle the request and send a response
