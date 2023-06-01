@@ -1,7 +1,6 @@
 import react, {useState, useEffect} from 'react';
 import { HorizontalBarrier } from './sharedComponents';
-
-
+import axios from 'axios';
 
 
 export default function Exercise6(){
@@ -12,7 +11,19 @@ export default function Exercise6(){
     const locationCaptured = (event) => {
         event.preventDefault();
         const enteredLocation = event.target.elements.location.value;
-        console.log(enteredLocation);
+        const data = { key: enteredLocation };
+        console.log(data,enteredLocation, "this"); 
+        axios.post('http://localhost:8000/locationName', data)
+        .then(response => {
+            // Handle the response from the server
+            let workingLink = response.data.message
+            console.log(workingLink);            
+        })
+        .catch(error => {
+            // Handle any errors that occurred during the request
+            console.error('Error:', error);
+        });
+
      }
 
   
