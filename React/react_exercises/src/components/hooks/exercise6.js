@@ -1,6 +1,10 @@
 import react, {useState, useEffect} from 'react';
 import { HorizontalBarrier } from './sharedComponents';
 import axios from 'axios';
+import clearWeatherImage from './clear_weather.jpg';
+import blizzardWeatherImage from './blizzard_weather.jpg';
+import randomWeatherImage from './random_weather.jpg';
+import cloudyWeatherImage from './cloudy_weather.jpg';
 
 
 export default function Exercise6(){
@@ -10,6 +14,7 @@ export default function Exercise6(){
     const [location, setLocation] = useState(null);
     const [country, setCountry] = useState(null);
     const [forecast, setForecast] = useState(null);
+    const [imageUrl, setImageUrl] = useState('');
 
     const locationCaptured = async (event) => {
         event.preventDefault();
@@ -40,6 +45,24 @@ export default function Exercise6(){
               setLocation(data.location.name);
               setCountry(data.location.country);
               setForecast(data.current.condition.text);
+              if (forecast === 'Clear' || forecast === 'Night') {
+                setImageUrl(clearWeatherImage);
+              } else if (
+                forecast === 'Partly cloudy' || forecast === 'Patchy rain possible' || forecast === 'Blowing snow' || forecast === 'Patchy light drizzle' ||
+                forecast === 'Light drizzle' || forecast === 'Patchy light rain' || forecast === 'Light rain' || forecast === 'Moderate rain at times' || 
+                forecast === 'Moderate rain' || forecast === 'Heavy rain at times' || forecast === 'Heavy rain' || forecast === 'Light freezing rain' ||
+                forecast === 'Moderate or heavy freezing rain' || forecast === 'Patchy light snow' || forecast === 'Light snow' || forecast === 'Patchy moderate snow' ||
+                forecast === 'Moderate snow' || forecast === 'Patchy heavy snow' || forecast === 'Heavy snow' || forecast === 'Ice pellets' ||
+                forecast === 'Overcast' || forecast === 'Mist' || forecast === 'Fog' || forecast === 'Freezing fog'
+              ) {
+                setImageUrl(cloudyWeatherImage);
+              
+              } else if (forecast === 'Blizzard') {
+                setImageUrl(blizzardWeatherImage);
+              } else {
+                setImageUrl(randomWeatherImage);
+              }
+              
             } else {
               throw new Error('Request failed');
             }
@@ -73,8 +96,8 @@ export default function Exercise6(){
         {isValid === true && ( <p>Location: {location}</p> )}
         {isValid === true && ( <p>Country: {country}</p> )}
         {isValid === true && ( <p>Condition: {forecast}</p> )}
+        <img src={imageUrl} alt="Weather" />
         {isValid === false && ( <p>Enter a valid location</p> )}
-        
         </div>
     )
 }
