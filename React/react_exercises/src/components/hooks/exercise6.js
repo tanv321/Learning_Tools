@@ -5,26 +5,54 @@ import axios from 'axios';
 
 export default function Exercise6(){
 
+    const [workingLink, setWorkingLink] = useState('');
+    const [isValid, setIsValid] = useState(null);
+    const [location, setLocation] = useState(null);
+    const [country, setCountry] = useState(null);
+    const [forecast, setForecast] = useState(null);
 
-    const [location, setLocation] = useState('');
-
-    const locationCaptured = (event) => {
+    const locationCaptured = async (event) => {
         event.preventDefault();
         const enteredLocation = event.target.elements.location.value;
         const data = { key: enteredLocation };
-        console.log(data,enteredLocation, "this"); 
-        axios.post('http://localhost:8000/locationName', data)
+        await axios.post('http://localhost:8000/locationName', data)
         .then(response => {
             // Handle the response from the server
-            let workingLink = response.data.message
-            console.log(workingLink);            
+            const weatherLink = response.data.message
+            setWorkingLink(weatherLink)
         })
         .catch(error => {
             // Handle any errors that occurred during the request
             console.error('Error:', error);
         });
+    }
 
-     }
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const response = await fetch(workingLink);
+    
+            if (response.ok) {
+              const data = await response.json();
+              // Handle the received data
+
+              setIsValid(true);
+              setLocation(data.location.name);
+              setCountry(data.location.country);
+              setForecast(data.current.condition.text);
+            } else {
+              throw new Error('Request failed');
+            }
+          } catch (error) {
+            // Handle any errors that occurred during the request
+            console.error('Error:', error);
+            setIsValid(false);
+          }
+          
+        };
+    
+        fetchData();
+      }, [workingLink]);
 
   
     return (
@@ -42,7 +70,11 @@ export default function Exercise6(){
         <textarea style={{width: '400px' }} placeholder="Insert location to view the weather: Philadelphia" name="location"></textarea>
         <button type="submit">Submit</button>
         </form>
-
+        {isValid === true && ( <p>Location: {location}</p> )}
+        {isValid === true && ( <p>Country: {country}</p> )}
+        {isValid === true && ( <p>Condition: {forecast}</p> )}
+        {isValid === false && ( <p>Enter a valid location</p> )}
+        
         </div>
     )
 }
