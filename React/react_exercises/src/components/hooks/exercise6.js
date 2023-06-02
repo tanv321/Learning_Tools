@@ -33,50 +33,56 @@ export default function Exercise6(){
     }
 
     useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const response = await fetch(workingLink);
-    
-            if (response.ok) {
-              const data = await response.json();
-              // Handle the received data
-
-              setIsValid(true);
-              setLocation(data.location.name);
-              setCountry(data.location.country);
-              setForecast(data.current.condition.text);
-              if (forecast === 'Clear' || forecast === 'Night') {
-                setImageUrl(clearWeatherImage);
-              } else if (
-                forecast === 'Partly cloudy' || forecast === 'Patchy rain possible' || forecast === 'Blowing snow' || forecast === 'Patchy light drizzle' ||
-                forecast === 'Light drizzle' || forecast === 'Patchy light rain' || forecast === 'Light rain' || forecast === 'Moderate rain at times' || 
-                forecast === 'Moderate rain' || forecast === 'Heavy rain at times' || forecast === 'Heavy rain' || forecast === 'Light freezing rain' ||
-                forecast === 'Moderate or heavy freezing rain' || forecast === 'Patchy light snow' || forecast === 'Light snow' || forecast === 'Patchy moderate snow' ||
-                forecast === 'Moderate snow' || forecast === 'Patchy heavy snow' || forecast === 'Heavy snow' || forecast === 'Ice pellets' ||
-                forecast === 'Overcast' || forecast === 'Mist' || forecast === 'Fog' || forecast === 'Freezing fog'
-              ) {
-                setImageUrl(cloudyWeatherImage);
-              
-              } else if (forecast === 'Blizzard') {
-                setImageUrl(blizzardWeatherImage);
-              } else {
-                setImageUrl(randomWeatherImage);
-              }
-              
-            } else {
-              throw new Error('Request failed');
-            }
-          } catch (error) {
-            // Handle any errors that occurred during the request
-            console.error('Error:', error);
-            setIsValid(false);
+      const fetchData = async () => {
+        try {
+          const response = await fetch(workingLink);
+          if (response.ok) {
+            const data = await response.json();
+            // Handle the received data
+            setIsValid(true);
+            setLocation(data.location.name);
+            setCountry(data.location.country);
+            setForecast(data.current.condition.text);
+            console.log(forecast, "the forecast", "we ran again");
+          } else {
+            setIsValid(null);
+            throw new Error('Request failed');
           }
-          
-        };
+        } catch (error) {
+          // Handle any errors that occurred during the request
+          console.error('Error:', error);
+          setIsValid(false);
+        }
+      };
     
-        fetchData();
-      }, [workingLink]);
+      fetchData();
+    }, [workingLink]);
+    
+    useEffect(() => {
+      if (forecast === 'Clear' || forecast === 'Night' || forecast === 'Sunny') {
+        setImageUrl(clearWeatherImage);
+        console.log("we come here 1");
+      } else if (
+        forecast === 'Partly cloudy' || forecast === 'Patchy rain possible' || forecast === 'Blowing snow' || forecast === 'Patchy light drizzle' ||
+        forecast === 'Light drizzle' || forecast === 'Patchy light rain' || forecast === 'Light rain' || forecast === 'Moderate rain at times' ||
+        forecast === 'Moderate rain' || forecast === 'Heavy rain at times' || forecast === 'Heavy rain' || forecast === 'Light freezing rain' ||
+        forecast === 'Moderate or heavy freezing rain' || forecast === 'Patchy light snow' || forecast === 'Light snow' || forecast === 'Patchy moderate snow' ||
+        forecast === 'Moderate snow' || forecast === 'Patchy heavy snow' || forecast === 'Heavy snow' || forecast === 'Ice pellets' ||
+        forecast === 'Overcast' || forecast === 'Mist' || forecast === 'Fog' || forecast === 'Freezing fog'
+      ) {
+        setImageUrl(cloudyWeatherImage);
+        console.log("we come here 2");
+      } else if (forecast === 'Blizzard') {
+        setImageUrl(blizzardWeatherImage);
+        console.log("we come here 3");
+      } else {
+        setImageUrl(randomWeatherImage);
+        console.log("we come here 4");
+      }
+    }, [forecast]);
+    
 
+    
   
     return (
 
@@ -96,7 +102,7 @@ export default function Exercise6(){
         {isValid === true && ( <p>Location: {location}</p> )}
         {isValid === true && ( <p>Country: {country}</p> )}
         {isValid === true && ( <p>Condition: {forecast}</p> )}
-        <img src={imageUrl} alt="Weather" />
+        {isValid === true && ( <img src={imageUrl} alt="Weather" />) }
         {isValid === false && ( <p>Enter a valid location</p> )}
         </div>
     )
