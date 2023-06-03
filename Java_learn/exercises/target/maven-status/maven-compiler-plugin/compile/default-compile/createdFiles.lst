@@ -1,4 +1,7 @@
 com\java_exercises\WeatherApp.class
-com\java_exercises\App.class
 com\java_exercises\testing_maven.class
+com\java_exercises\FlightBookingSystem$Flight.class
 com\java_exercises\EmailClient.class
+com\java_exercises\App.class
+com\java_exercises\FlightBookingSystem$Flight$Passenger.class
+com\java_exercises\FlightBookingSystem.class

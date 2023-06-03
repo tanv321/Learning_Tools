@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.java_exercises.AppTest" time="0.076" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.java_exercises.AppTest" time="0.064" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="15"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-15.0.2\bin"/>
-    <property name="sun.java.command" value="C:\Users\alamt\AppData\Local\Temp\surefire15261842083978198621\surefirebooter17255342791595377316.jar C:\Users\alamt\AppData\Local\Temp\surefire15261842083978198621 2023-05-28T14-43-13_276-jvmRun1 surefire17776588531958404492tmp surefire_013793768919515662661tmp"/>
+    <property name="sun.java.command" value="C:\Users\alamt\AppData\Local\Temp\surefire1318252738067039905\surefirebooter8681929028513770530.jar C:\Users\alamt\AppData\Local\Temp\surefire1318252738067039905 2023-06-03T14-11-09_906-jvmRun1 surefire12638753975763791511tmp surefire_08678264074404675456tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\alamt\Documents\Programming_Projects\Java_learn\exercises\target\test-classes;C:\Users\alamt\Documents\Programming_Projects\Java_learn\exercises\target\classes;C:\Users\alamt\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\alamt\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\alamt\.m2\repository\io\github\cdimascio\java-dotenv\5.0.0\java-dotenv-5.0.0.jar;C:\Users\alamt\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib\1.3.21\kotlin-stdlib-1.3.21.jar;C:\Users\alamt\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-common\1.3.21\kotlin-stdlib-common-1.3.21.jar;C:\Users\alamt\.m2\repository\org\jetbrains\annotations\13.0\annotations-13.0.jar;C:\Users\alamt\.m2\repository\org\apache\commons\commons-lang3\3.12.0\commons-lang3-3.12.0.jar;C:\Users\alamt\.m2\repository\org\apache\httpcomponents\client5\httpclient5\5.1.3\httpclient5-5.1.3.jar;C:\Users\alamt\.m2\repository\org\apache\httpcomponents\core5\httpcore5\5.1.3\httpcore5-5.1.3.jar;C:\Users\alamt\.m2\repository\org\apache\httpcomponents\core5\httpcore5-h2\5.1.3\httpcore5-h2-5.1.3.jar;C:\Users\alamt\.m2\repository\org\slf4j\slf4j-api\1.7.25\slf4j-api-1.7.25.jar;C:\Users\alamt\.m2\repository\commons-codec\commons-codec\1.15\commons-codec-1.15.jar;C:\Users\alamt\.m2\repository\org\apache\httpcomponents\client5\httpclient5-fluent\5.1.3\httpclient5-fluent-5.1.3.jar;C:\Users\alamt\.m2\repository\com\googlecode\json-simple\json-simple\1.1.1\json-simple-1.1.1.jar;C:\Users\alamt\.m2\repository\org\json\json\20230227\json-20230227.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\alamt\AppData\Local\Temp\surefire15261842083978198621\surefirebooter17255342791595377316.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\alamt\AppData\Local\Temp\surefire1318252738067039905\surefirebooter8681929028513770530.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="15.0.2+7-27"/>

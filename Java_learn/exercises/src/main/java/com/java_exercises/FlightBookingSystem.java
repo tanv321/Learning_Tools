@@ -47,6 +47,11 @@ public class FlightBookingSystem {
         this.seats = seats;
 
     }
+    
+    public void remove_seats(Flight info){
+        System.out.println(info);
+    }
+
 
 
     @Override
@@ -57,6 +62,30 @@ public class FlightBookingSystem {
     }
     
 
+    public static class Passenger{
+        private List<String> first_name;
+        private List<String> last_name;
+        private List<Integer> flight_number;
+        private List<Integer> seats_needed;
+        
+
+        public Passenger(List<String> first_name,List<String> last_name,List<Integer> flight_number,List<Integer> seats_needed){
+            this.first_name = first_name;
+            this.last_name = last_name;
+            this.flight_number = flight_number;
+            this.seats_needed = seats_needed;
+        }
+
+        public int seats_left(List<FlightBookingSystem> flights){
+            
+            System.out.println("start here\n");
+            System.out.println(flights);
+            
+
+            return 3;
+        }
+
+    
     
     public static void main(String[] args){
 
@@ -89,9 +118,28 @@ public class FlightBookingSystem {
 
         List<FlightBookingSystem.Flight> flights = system.getFlights();
 
+        System.out.println(flights);
+        
+
+
         for (FlightBookingSystem.Flight flight : flights) {
-            System.out.println(flight);
+            flight.remove_seats(flight);
+        }
+        
+
+        
+    //     Passenger inserting_passenenser = new Passenger(
+    //         List.of("John", "Michael", "Bob"),
+    //         List.of("Doe", "Black", "Henry"),
+    //         List.of(999, 777, 888),
+    //         List.of(10, 20, 5)
+    // );       
+    
+
+
+
+            }
         }
     }
-    }
+
 }
