@@ -1,10 +1,10 @@
 import react, {useState, useEffect} from 'react';
 import { HorizontalBarrier } from './sharedComponents';
 import axios from 'axios';
-import clearWeatherImage from './clear_weather.jpg';
-import blizzardWeatherImage from './blizzard_weather.jpg';
-import randomWeatherImage from './random_weather.jpg';
-import cloudyWeatherImage from './cloudy_weather.jpg';
+import clearWeatherImage from './weather_images/clear_weather.jpg';
+import blizzardWeatherImage from './weather_images/blizzard_weather.jpg';
+import randomWeatherImage from './weather_images/random_weather.jpg';
+import cloudyWeatherImage from './weather_images/cloudy_weather.jpg';
 
 
 export default function Exercise6(){
@@ -14,6 +14,8 @@ export default function Exercise6(){
     const [location, setLocation] = useState(null);
     const [country, setCountry] = useState(null);
     const [forecast, setForecast] = useState(null);
+    const [temF, setTemF] = useState(null);
+    const [temC, setTemC] = useState(null);
     const [imageUrl, setImageUrl] = useState('');
 
     const locationCaptured = async (event) => {
@@ -43,7 +45,8 @@ export default function Exercise6(){
             setLocation(data.location.name);
             setCountry(data.location.country);
             setForecast(data.current.condition.text);
-            console.log(forecast, "the forecast", "we ran again");
+            setTemF(data.current.temp_f)
+            setTemC(data.current.temp_c)
           } else {
             setIsValid(null);
             throw new Error('Request failed');
@@ -61,7 +64,6 @@ export default function Exercise6(){
     useEffect(() => {
       if (forecast === 'Clear' || forecast === 'Night' || forecast === 'Sunny') {
         setImageUrl(clearWeatherImage);
-        console.log("we come here 1");
       } else if (
         forecast === 'Partly cloudy' || forecast === 'Patchy rain possible' || forecast === 'Blowing snow' || forecast === 'Patchy light drizzle' ||
         forecast === 'Light drizzle' || forecast === 'Patchy light rain' || forecast === 'Light rain' || forecast === 'Moderate rain at times' ||
@@ -71,13 +73,10 @@ export default function Exercise6(){
         forecast === 'Overcast' || forecast === 'Mist' || forecast === 'Fog' || forecast === 'Freezing fog'
       ) {
         setImageUrl(cloudyWeatherImage);
-        console.log("we come here 2");
       } else if (forecast === 'Blizzard') {
         setImageUrl(blizzardWeatherImage);
-        console.log("we come here 3");
       } else {
         setImageUrl(randomWeatherImage);
-        console.log("we come here 4");
       }
     }, [forecast]);
     
@@ -101,6 +100,8 @@ export default function Exercise6(){
         </form>
         {isValid === true && ( <p>Location: {location}</p> )}
         {isValid === true && ( <p>Country: {country}</p> )}
+        {isValid === true && ( <p>Temperature in Fahrenheit.: {temF}°</p> )}
+        {isValid === true && ( <p>Temperature in Celsius.: {temC}°</p> )}
         {isValid === true && ( <p>Condition: {forecast}</p> )}
         {isValid === true && ( <img src={imageUrl} alt="Weather" />) }
         {isValid === false && ( <p>Enter a valid location</p> )}
