@@ -19,5 +19,5 @@ The main purpose of this project is to provide a platform for me to experiment w
 Feel free to explore the different folders and projects within this repository. Each project has its own set of instructions and dependencies outlined in its respective README.md file. If you have any questions or suggestions, please feel free to reach out to me.
 
 ## License
-This project is licensed under the [MIT License](link-to-license-file), which means you are free to use, modify, and distribute the code for personal or commercial purposes.
+This project is licensed under the [MIT License](./LICENSE), which means you are free to use, modify, and distribute the code for personal or commercial purposes.
 
