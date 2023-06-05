@@ -9,6 +9,7 @@ managing passenger information, handling flight cancellations or delays, and int
 
  import java.util.List;
  import java.util.ArrayList;
+import java.util.Arrays;
  
 public class FlightBookingSystem {
     private List<Flight> flights;
@@ -48,8 +49,15 @@ public class FlightBookingSystem {
 
     }
     
-    public void remove_seats(Flight info){
-        System.out.println(info);
+    public boolean remove_seats(Flight info, int flightNumber, int seats_remove){
+        if(info.flight_Number == flightNumber) {
+            info.seats-=seats_remove;
+            return true;
+
+        }
+        return false;
+
+        
     }
 
 
@@ -63,26 +71,34 @@ public class FlightBookingSystem {
     
 
     public static class Passenger{
-        private List<String> first_name;
-        private List<String> last_name;
-        private List<Integer> flight_number;
-        private List<Integer> seats_needed;
+        private String first_name;
+        private String last_name;
+        private Integer flight_number;
+        private Integer seats_needed;
         
 
-        public Passenger(List<String> first_name,List<String> last_name,List<Integer> flight_number,List<Integer> seats_needed){
+        public Passenger(String first_name, String last_name,Integer flight_number, Integer seats_needed){
             this.first_name = first_name;
             this.last_name = last_name;
             this.flight_number = flight_number;
             this.seats_needed = seats_needed;
         }
 
-        public int seats_left(List<FlightBookingSystem> flights){
-            
-            System.out.println("start here\n");
-            System.out.println(flights);
-            
 
-            return 3;
+        public void seats_left(List<FlightBookingSystem.Flight> flights, int flightNumber){
+            
+            // System.out.println("start here\n");
+            // System.out.println(flightNumber);
+            // System.out.println(flights);
+            boolean found = false;
+            for (FlightBookingSystem.Flight flight : flights) {
+                found = flight.remove_seats(flight, flightNumber, this.seats_needed);
+                if (found == true) {
+                    System.out.println("The number of seats remaining for flight number: " + String.valueOf(flightNumber) + " is " + flight + "seats");
+                    break;
+                }
+            }
+            
         }
 
     
@@ -114,28 +130,12 @@ public class FlightBookingSystem {
         system.addFlight(flight10);
         system.addFlight(flight11);
         
-        
 
         List<FlightBookingSystem.Flight> flights = system.getFlights();
 
-        System.out.println(flights);
-        
-
-
-        for (FlightBookingSystem.Flight flight : flights) {
-            flight.remove_seats(flight);
-        }
-        
-
-        
-    //     Passenger inserting_passenenser = new Passenger(
-    //         List.of("John", "Michael", "Bob"),
-    //         List.of("Doe", "Black", "Henry"),
-    //         List.of(999, 777, 888),
-    //         List.of(10, 20, 5)
-    // );       
-    
-
+        Passenger inserting_passenenser = new Passenger("John","Doe",999,10);    
+           
+        inserting_passenenser.seats_left(flights, 777);
 
 
             }
