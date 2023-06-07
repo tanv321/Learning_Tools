@@ -9,10 +9,20 @@ public class MainBankAccount {
 
         // Perform operations on the savings account
         savingsAccount.displayAccountInfo();
-        savingsAccount.deposit(500.0);
-        savingsAccount.withdraw(200.0);
+        savingsAccount.deposit(10.0);
+        savingsAccount.displayAccountInfo();
+        savingsAccount.withdraw(5.0);
+        savingsAccount.displayAccountInfo();
         savingsAccount.calculateInterest();
         savingsAccount.displayAccountInfo();
+        
+        checkingAccount checkingAccount = new checkingAccount("1234567890",500.0, 10);
+
+        checkingAccount.displayAccountInfo();
+        checkingAccount.withdraw(100);
+        checkingAccount.displayAccountInfo();
+
+
     }
 
 

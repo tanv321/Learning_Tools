@@ -24,7 +24,7 @@ public class SavingAccount extends BankAccount implements BankAccount.InterestBe
         double currentBalance = getBalance();
         if (currentBalance >= amount){
             currentBalance-=amount;
-            setBalance(amount);
+            setBalance(currentBalance);
             
         }
     }
