@@ -46,9 +46,8 @@ abstract class BankAccount {
     public String getAccountNumber(){
         return accountNumber;
     }
-    public String setAccountNumber(String value){
+    public void setAccountNumber(String value){
         accountNumber = value;
-        return accountNumber;
     }
 
     public double getBalance(){

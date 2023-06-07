@@ -1,10 +1,10 @@
 package com.java_exercises;
 
-public class checkingAccount extends BankAccount {
+public class CheckingAccount extends BankAccount {
 
     private double transactionFee;
 
-    public checkingAccount(String accountNumber, double balance, double transactionFee){
+    public CheckingAccount(String accountNumber, double balance, double transactionFee){
         super(accountNumber, balance);
         this.transactionFee = transactionFee;
     }

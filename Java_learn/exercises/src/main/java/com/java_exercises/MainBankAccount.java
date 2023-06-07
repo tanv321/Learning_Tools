@@ -5,7 +5,7 @@ public class MainBankAccount {
 
     public static void main(String[] args) {
         // Create a SavingsAccount object
-        SavingAccount savingsAccount = new SavingAccount("1234567890", 1000.0, 0.05);
+        SavingsAccount savingsAccount = new SavingsAccount("1234567890", 1000.0, 0.05);
 
         // Perform operations on the savings account
         savingsAccount.displayAccountInfo();
@@ -16,7 +16,7 @@ public class MainBankAccount {
         savingsAccount.calculateInterest();
         savingsAccount.displayAccountInfo();
         
-        checkingAccount checkingAccount = new checkingAccount("1234567890",500.0, 10);
+        CheckingAccount checkingAccount = new CheckingAccount("1234567890",500.0, 10);
 
         checkingAccount.displayAccountInfo();
         checkingAccount.withdraw(100);

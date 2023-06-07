@@ -1,16 +1,16 @@
 package com.java_exercises;
 
-public class SavingAccount extends BankAccount implements BankAccount.InterestBearing {
+public class SavingsAccount extends BankAccount implements BankAccount.InterestBearing {
     
     private double interestRate;
 
-    public SavingAccount(String accountNumber, double balance, double interestRate){
+    public SavingsAccount(String accountNumber, double balance, double interestRate){
         super(accountNumber, balance);
         this.interestRate = interestRate;
 
     }
 
-    @override 
+    @Override 
     public double deposit(double amount){
         double currentBalance = getBalance();
         currentBalance += amount;
@@ -19,7 +19,7 @@ public class SavingAccount extends BankAccount implements BankAccount.InterestBe
     }
     
 
-    @override
+    @Override
     public void withdraw(double amount){
         double currentBalance = getBalance();
         if (currentBalance >= amount){
