@@ -8,7 +8,7 @@ The program should have multiple threads representing bank customers performing 
 
 Requirements:
 
-Create a BankAccountThreads class that represents a bank account. It should have methods for depositing and withdrawing funds.
+Create a SimpleBankAccount class that represents a bank account. It should have methods for depositing and withdrawing funds.
 
 Implement a BankTransaction class that extends Thread. Each BankTransaction thread represents a bank customer. The thread should randomly perform deposits and withdrawals on the shared bank account.
 
@@ -25,7 +25,42 @@ Your task is to implement the necessary synchronization mechanisms using either 
 
 
  public class SimpleBankAccount{
+    private int accountNumber;
+    private int balance; 
+
+    public SimpleBankAccount(int accountNumber){
+        this.accountNumber = accountNumber;
+        this.balance = 10000;
+    }
 
     
+    public  void deposit(int amount){        
+        this.balance+=amount;
+        System.out.println("your total fund is :" + this.balance);
+    }
+
+    public void withdraw(int amount) {
+        if (this.balance < amount){
+            System.out.println("You dont have sufficient fund");
+        }
+        else{
+            this.balance-=amount;
+            System.out.println("your total fund is :" + this.balance);
+        }
+    }
+
+    public void getAccountNumber(){
+        System.out.println("your account number is: " + this.accountNumber);
+    }
+    
+    public static void main(String[] args) {
+        SimpleBankAccount simpleBank = new SimpleBankAccount(77777);
+        simpleBank.withdraw(123456789);
+        simpleBank.withdraw(4000);
+        simpleBank.deposit(100);
+        simpleBank.getAccountNumber();
+    }
 
  }
+
+
