@@ -20,6 +20,7 @@ function App() {
         <a style = {{color : "orange", fontSize:"15px" }} href="http://localhost:3000/hooks/exercise4">Exercise 4</a>
         <a style = {{color : "orange", fontSize:"15px" }} href="http://localhost:3000/hooks/exercise6">Exercise 6</a>
         <a style = {{color : "orange", fontSize:"15px" }} href="http://localhost:3000/hooks/exercise8">Exercise 8</a>
+        <a style = {{color : "orange", fontSize:"15px" }} href="http://localhost:3000/hooks/exercise28">Exercise 28</a>
       </header>
     </div>
   );

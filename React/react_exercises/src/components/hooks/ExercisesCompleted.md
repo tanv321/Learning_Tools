@@ -75,3 +75,32 @@
 # Exercise 25:
 - Create a React component called "AudioPlayer". This component should render an audio player with play, pause, and volume controls. Implement the functionality to play or pause the audio and adjust the volume.
 
+# Exercise 26:
+- Create a React component called "InfiniteScroll". This component should render a list of items and load more items when the user scrolls down to the bottom of the list. Implement the functionality to fetch and display more items when the end of the list is reached.
+
+# Exercise 27:
+- Create a React component called "EcommerceCart". This component should render a shopping cart interface for an - ecommerce platform. Implement functionalities to add and remove products, update quantities, apply discount codes, calculate subtotal, taxes, and total price, and checkout.
+
+# Exercise 28:
+- Create a React component called "BookingCalendar". This component should render a calendar interface for booking appointments. Implement functionalities to choose available dates and time slots, book an appointment, and display the list of booked appointments.
+
+# Exercise 29: 
+- Create a React component called "GraphVisualizer". This component should render a graphical representation of data sets (line chart, bar chart, pie chart, etc.). Implement functionalities to switch between different types of charts, update data sets, and interact with the graph.
+
+# Exercise 30: 
+- Create a React component called "MultiStepForm". This component should render a multi-step form where the user can navigate between different sections. Implement functionalities to validate input data, save progress, and submit the entire form.
+
+# Exercise 31: 
+- Create a React component called "LiveSearch". This component should render a search bar that fetches and displays results from a backend service as the user types in their query.
+
+# Exercise 32: 
+- Create a React component called "UserDashboard". This component should render a personalized user dashboard with various widgets like recent activity, notifications, profile overview etc. Implement functionalities to customize the dashboard layout, add/remove widgets and fetch relevant data for each widget.
+
+# Exercise 33: 
+- Create a React component called "VirtualRealityViewer". This component should render a virtual reality (VR) interface that allows users to view and interact with 3D environments or models. (Requires WebVR or similar technology)
+
+# Exercise 34: 
+- Create a React component called "CustomRouter". This component should implement a custom routing mechanism for a single-page app, enabling navigation between different components without a page reload.
+
+# Exercise 35: 
+- Create a React component called "AIChatBot". This component should render a chatbot interface and implement functionalities to interpret user input, generate appropriate responses using an AI model, and display the conversation.

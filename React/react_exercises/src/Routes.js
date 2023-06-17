@@ -13,6 +13,8 @@ import Exercise6 from './components/hooks/exercise6';
 
 import Exercise8 from './components/hooks/exercise8';
 
+import Exercise28 from './components/hooks/exercise28';
+
 function App() {
   return (
     <div className="App">
@@ -25,6 +27,7 @@ function App() {
           <Route path="/hooks/exercise4" element={<Exercise4 />} />
           <Route path="/hooks/exercise6" element={<Exercise6 />} />
           <Route path="/hooks/exercise8" element={<Exercise8 />} />
+          <Route path="/hooks/exercise28" element={<Exercise28 />} />
         </Routes>
       </Router>
     </div>
