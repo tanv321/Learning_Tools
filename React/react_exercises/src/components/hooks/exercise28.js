@@ -1,10 +1,12 @@
-import react, {useState} from 'react';
+import react, {useState, useEffect} from 'react';
 import { HorizontalBarrier } from './sharedComponents';
 
 export default function Exercise28(){
     const [appointment, setAppointment] = useState(false)
     const [months, setMonths] = useState([])
     const [showDate, setShowDate] = useState(false)
+    const [tempDate, setTempDate] = useState("")
+    const [datePicked, setDatePicked] = useState([])
 
 
     const showDates = () => {
@@ -27,13 +29,34 @@ export default function Exercise28(){
 
     const monthPicked = (value) => {
         setShowDate(true);
+        setTempDate(value.target.textContent)
         console.log(value.target.textContent)
 
     }
     const daysPicked = (value) => {
-        console.log(value.target.textContent)
-
+        let picked_date = value.target.textContent
+        setTempDate(prevDate => prevDate + picked_date);
+       
     }
+    useEffect(() => {
+        console.log(tempDate.length, "length")
+        if (tempDate.length > 6) {
+        let count = 0;
+        console.log(tempDate, "<-tempDate; datePicked->", datePicked);
+        for (let i = 0; i < datePicked.length; i++) {
+          console.log(datePicked[i]);
+          if (datePicked[i] === tempDate) {
+            console.log("two identical dates", datePicked[i]);
+            count += 1;
+            break;
+          }
+        }
+        if (count === 0) {setDatePicked(prevDate => [...prevDate, tempDate]);}
+        setTempDate('')
+    };
+
+      }, [datePicked, tempDate]);
+
 
     return (
         <div>
