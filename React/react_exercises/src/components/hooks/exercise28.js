@@ -4,7 +4,6 @@ import Modal from 'react-modal';
 
 export default function Exercise28(){
     const [appointment, setAppointment] = useState(false)
-    const [months, setMonths] = useState([])
     const [showDate, setShowDate] = useState(false)
     const [tempDate, setTempDate] = useState("")
     const [datePicked, setDatePicked] = useState([])
@@ -35,7 +34,7 @@ export default function Exercise28(){
 
     const monthPicked = (event) => {
         setShowDate(true);
-        setTempDate(event.target.value)
+        setTempDate(event.target.value + " ")
 
     }
     const daysPicked = (event) => {
@@ -44,12 +43,10 @@ export default function Exercise28(){
        
     }
     useEffect(() => {
-        console.log(tempDate.length, "length")
-        if (tempDate.length >= 4) {
+        if (tempDate.length >= 5) {
         let count = 0;
         console.log(tempDate, "<-tempDate; datePicked->", datePicked);
         for (let i = 0; i < datePicked.length; i++) {
-          console.log(datePicked[i]);
           if (datePicked[i] === tempDate) {            
             count += 1;
             break;
@@ -57,12 +54,12 @@ export default function Exercise28(){
         }
         if (count === 0) {
           setDatePicked(prevDate => [...prevDate, tempDate]);
-          setMessage("Date confirmed! " + tempDate);
+          setMessage("Date confirmed! we will set your date to " + tempDate);
           setMessageType('confirm');
           setMessageOn(true);
         }
         else {
-          setMessage("Two identical dates, please choose another date " + tempDate);
+          setMessage("Two identical dates, please choose another date that is not" + tempDate);
           setMessageType('error');
           setMessageOn(true);
       }
@@ -74,7 +71,6 @@ export default function Exercise28(){
       
     return (
         <div>
-
         <h1> Exercise Twenty-eight</h1>
         <h1 style={{ fontSize: '10px' }}>
         Create a React component called "BookingCalendar". 
@@ -82,6 +78,12 @@ export default function Exercise28(){
         Implement functionalities to choose available dates and time slots, book an appointment, and display the list of booked appointments.
         </h1>
         <HorizontalBarrier />
+
+        <h1 style={{fontSize:'20px', color:"blue"}}> 
+          Today's Date is: <br/>
+          {new Date().toLocaleString("en-US", { month: "short" })} {" "}
+          {new Date().toLocaleString("en-US", { day : '2-digit'})}
+        </h1>
         <p style={{ fontSize: '20px' }} > Click <button onClick= { showDates } > "need appointment" </button>, to see availabilities. </p>
 
         { messageOn === true && (
@@ -94,7 +96,7 @@ export default function Exercise28(){
 
         { appointment === true && (
         <div>
-        <p> Months </p> 
+        <p style={{fontSize:'20px'}}> Months </p> 
         <select onChange={monthPicked}>
           { calender.flat().map((value, rowIndex) => (
           <option key={rowIndex} value={value}>
@@ -106,10 +108,10 @@ export default function Exercise28(){
             </div>
         )}
 
-
+      <br/> 
       { showDate === true && (
         <div>
-          <p>Days</p>
+          <p style={{fontSize:'20px'}} >Days</p>
           <select onChange={daysPicked}>
             {days.flat().map((value, index) => (
               <option key={index} value={value}>
