@@ -1,5 +1,6 @@
 import react, {useState, useEffect} from 'react';
 import { HorizontalBarrier } from './sharedComponents';
+import Modal from 'react-modal';
 
 export default function Exercise28(){
     const [appointment, setAppointment] = useState(false)
@@ -7,6 +8,11 @@ export default function Exercise28(){
     const [showDate, setShowDate] = useState(false)
     const [tempDate, setTempDate] = useState("")
     const [datePicked, setDatePicked] = useState([])
+    const [messageOn, setMessageOn] = useState(false);
+    const [message, setMessage] = useState("");
+    const [messageType, setMessageType] = useState("");
+    
+
 
 
     const showDates = () => {
@@ -45,19 +51,28 @@ export default function Exercise28(){
         console.log(tempDate, "<-tempDate; datePicked->", datePicked);
         for (let i = 0; i < datePicked.length; i++) {
           console.log(datePicked[i]);
-          if (datePicked[i] === tempDate) {
-            console.log("two identical dates", datePicked[i]);
+          if (datePicked[i] === tempDate) {            
             count += 1;
             break;
           }
         }
-        if (count === 0) {setDatePicked(prevDate => [...prevDate, tempDate]);}
+        if (count === 0) {
+          setDatePicked(prevDate => [...prevDate, tempDate]);
+          setMessage("Date confirmed! " + tempDate);
+          setMessageType('confirm');
+          setMessageOn(true);
+        }
+        else {
+          setMessage("Two identical dates, please choose another date " + tempDate);
+          setMessageType('error');
+          setMessageOn(true);
+      }
         setTempDate('')
     };
 
       }, [datePicked, tempDate]);
 
-
+      
     return (
         <div>
 
@@ -68,9 +83,17 @@ export default function Exercise28(){
         Implement functionalities to choose available dates and time slots, book an appointment, and display the list of booked appointments.
         </h1>
         <HorizontalBarrier />
-        <p style={{ fontSize: '13px' }} > Click <button onClick= { showDates } > "need appointment" </button>, to see availabilities. </p>
+        <p style={{ fontSize: '20px' }} > Click <button onClick= { showDates } > "need appointment" </button>, to see availabilities. </p>
 
-        { appointment == true && (
+        { messageOn === true && (
+          <div>
+          <h1 style={{ color: messageType === 'confirm' ? "green" : "red", fontSize:'30px' }}> { message } </h1>
+
+          </div>
+
+        )}
+
+        { appointment === true && (
         <div>
             <p> Months </p> { calender.map((row, rowIndex) => (
         
@@ -88,7 +111,7 @@ export default function Exercise28(){
       )}
 
 
-        { showDate == true && (
+        { showDate === true && (
         <div>
             <p> Days </p> { days.map((row, rowIndex) => (
 
