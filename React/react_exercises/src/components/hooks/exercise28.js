@@ -64,6 +64,7 @@ export default function Exercise28(){
           setMessageOn(true);
       }
         setTempDate('')
+
     };
 
       }, [datePicked, tempDate]);
@@ -84,7 +85,10 @@ export default function Exercise28(){
           {new Date().toLocaleString("en-US", { month: "short" })} {" "}
           {new Date().toLocaleString("en-US", { day : '2-digit'})}
         </h1>
-        <p style={{ fontSize: '20px' }} > Click <button onClick= { showDates } > "need appointment" </button>, to see availabilities. </p>
+        { appointment == false && (
+          
+          <p style={{ fontSize: '20px' }} > Click <button onClick= { showDates } > "need appointment" </button>, to see availabilities. </p>
+        )}
 
         { messageOn === true && (
           <div>
@@ -109,20 +113,38 @@ export default function Exercise28(){
         )}
 
       <br/> 
-      { showDate === true && (
+      {showDate === true && (
         <div>
-          <p style={{fontSize:'20px'}} >Days</p>
+          <p style={{ fontSize: '20px' }}>Days</p>
           <select onChange={daysPicked}>
-            {days.flat().map((value, index) => (
-              <option key={index} value={value}>
-                {value}
-              </option>
-            ))}
+            {days.flat().map((value, index) => {
+              if (
+                !datePicked.includes(tempDate + value) ||
+                (tempDate === '' && !datePicked.includes(value))
+              ) {
+                return (
+                  <option key={index} value={value}>
+                    {value}
+                  </option>
+                );
+              }
+              return null;
+            })}
           </select>
         </div>
       )}
        
-        
+       { messageOn === true && (
+           <div>
+           <p style={{ fontSize: '20px' }}>Booked appointments are listed below</p>
+           {datePicked.map((date, index) => (
+             <div key={index}>
+               <span style={{ fontSize:'20px' }}> {date}</span>
+             </div>
+           ))}
+         </div>
+            )}
+      
         
         </div>
     
