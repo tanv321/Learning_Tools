@@ -33,20 +33,19 @@ export default function Exercise28(){
         ["21", "22", "23", "24", "25", "26", "27", "28", "29", "30"],
       ];
 
-    const monthPicked = (value) => {
+    const monthPicked = (event) => {
         setShowDate(true);
-        setTempDate(value.target.textContent)
-        console.log(value.target.textContent)
+        setTempDate(event.target.value)
 
     }
-    const daysPicked = (value) => {
-        let picked_date = value.target.textContent
+    const daysPicked = (event) => {
+        let picked_date = event.target.value
         setTempDate(prevDate => prevDate + picked_date);
        
     }
     useEffect(() => {
         console.log(tempDate.length, "length")
-        if (tempDate.length > 6) {
+        if (tempDate.length >= 4) {
         let count = 0;
         console.log(tempDate, "<-tempDate; datePicked->", datePicked);
         for (let i = 0; i < datePicked.length; i++) {
@@ -95,39 +94,31 @@ export default function Exercise28(){
 
         { appointment === true && (
         <div>
-            <p> Months </p> { calender.map((row, rowIndex) => (
-        
-        <div key={rowIndex}>
-          {row.map((value, columnIndex) => (
-            <button key={columnIndex}
-            onClick={ monthPicked }>  {value}
-            </button>
-            
-          ))}
-          </div>
-        
-        ))}
-        </div>
-      )}
+        <p> Months </p> 
+        <select onChange={monthPicked}>
+          { calender.flat().map((value, rowIndex) => (
+          <option key={rowIndex} value={value}>
+            {value}
+          </option>
+              
+            ))}
+            </select>
+            </div>
+        )}
 
 
-        { showDate === true && (
+      { showDate === true && (
         <div>
-            <p> Days </p> { days.map((row, rowIndex) => (
-
-        <div key={rowIndex}>
-          {row.map((value, columnIndex) => (
-            <button key={columnIndex}
-            onClick={ daysPicked }>  {value}
-            </button>
-            
-          ))}
-          </div>
-        
-        ))}
+          <p>Days</p>
+          <select onChange={daysPicked}>
+            {days.flat().map((value, index) => (
+              <option key={index} value={value}>
+                {value}
+              </option>
+            ))}
+          </select>
         </div>
       )}
-        
        
         
         
