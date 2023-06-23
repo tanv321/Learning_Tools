@@ -104,3 +104,6 @@
 
 # Exercise 35: 
 - Create a React component called "AIChatBot". This component should render a chatbot interface and implement functionalities to interpret user input, generate appropriate responses using an AI model, and display the conversation.
+
+# Exercise 36
+- Create a React component called "CashRegister". This component should simulate a cash register interface where a random value representing the charged amount will be generated. The customer will then hand over a random combination of bills and coins they have in their pocket. The end user, who is operating the cash register, will be tasked with determining how much change to give back.
