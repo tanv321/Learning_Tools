@@ -17,9 +17,9 @@ export default function Exercise36() {
     let [customerGives, setCustomerGives] = useState("");
     let [result, setResult] = useState("");
 
-    
 
     const startService = () => {
+        setCompute(0.00);
 
         setUserSelected({
             1: 0, 5: 0, 10: 0, 20:0, 50: 0, 100: 0,
@@ -38,6 +38,7 @@ export default function Exercise36() {
         console.log(chargedFloat, "thissssss", customerGivesFloat, changeToGive);
     
     }
+
 
     const calculateChange = (charged, given) => {
         const denominations = [100, 50, 20, 10, 5, 1, 0.25, 0.10, 0.05, 0.01];
@@ -59,7 +60,6 @@ export default function Exercise36() {
     };
 
 
-
     const clearAnswer = () => {
         setUserSelected({
             1: 0, 5: 0, 10: 0, 20:0, 50: 0, 100: 0,
@@ -69,6 +69,8 @@ export default function Exercise36() {
         setCompute(0.00);
 
     }
+
+
     const evalAnswer = () => {
         if (isEqual(toGive, userSelected)) {
             setResult("You got the Correct Answer!")
@@ -77,6 +79,7 @@ export default function Exercise36() {
             console.log(toGive, userSelected);
         }
     }
+
 
     function isEqual(obj1, obj2) {
 
@@ -96,6 +99,7 @@ export default function Exercise36() {
         return true;
     }
 
+
     const bills = [
         ["1", "5", "10", "20", "50", "100"],
       ];
@@ -104,6 +108,7 @@ export default function Exercise36() {
         ["1", "5", "10", "25"],
     ]
       
+
     const valueCapture = (value) => {
         let value_clicked = value.target.textContent.trim();
         let trimmedValue;
@@ -136,9 +141,7 @@ export default function Exercise36() {
             console.log(trimmedValue, "hmm", trimmedValue.length, trimmedValue===1, compute);
 
         }
-    
-        console.log("About to call setUserSelected with trimmedValue: ", trimmedValue);
-    
+        
         setUserSelected(prevDictionary => {
             console.log("trimmedValue--->", trimmedValue, trimmedValue==="1", value_clicked);
             if (["1", "5", "10", "20", "50", "100", "0.01", "0.5", "0.10", "0.25"].includes(trimmedValue)) {
@@ -152,15 +155,10 @@ export default function Exercise36() {
 
         }
 
-        
-        
-      
-      
-      
     
     return (
         
-        <div>
+    <div>
 
       <h1>Exercise Thirty-six</h1>
       <h1 style={{ fontSize: '10px' }}>
@@ -171,18 +169,18 @@ export default function Exercise36() {
       </h1>
       <HorizontalBarrier />
 
-      <button style={{ fontSize:'80px' }} onClick={startService}> Start </button>
+      <button style={{ fontSize:'1rem' }} onClick={startService}> Start </button>
 
       <br/>
-      <h1 style={{ fontSize:'30px' }}> Price: ${charged} <br/>
+      <h1 style={{ fontSize:'1rem' }}> Price: ${charged} <br/>
            Customer Gives: ${customerGives}  <br/>
            What amount will you hand them back?
         </h1>
 
        {bills.map((row, rowIndex) => (
-        <div style={{ fontSize:"200px" }} key={rowIndex}>
+        <div style={{ fontSize:"1rem" }} key={rowIndex}>
           {row.map((value, columnIndex) => (
-            <button style={{ fontSize:"80px", color:"green" }} key={columnIndex}
+            <button style={{ fontSize:"2rem", color:"green" }} key={columnIndex}
             onClick= {valueCapture} > {"$"}{value} 
             </button>
           ))}
@@ -193,18 +191,16 @@ export default function Exercise36() {
     {coins.map((row, rowIndex) => (
         <div key={rowIndex}>
           {row.map((value, columnIndex) => (
-            <button style={{ fontSize:"40px", color:"orange"}} key={columnIndex}
+            <button style={{ fontSize:"1.5rem", color:"orange"}} key={columnIndex}
             onClick= {valueCapture} > {value} {"cents"} 
             </button>
           ))}
         </div>
       ))}
      
-    <br/>
-    
 
-    <h1> Giving back:</h1>
-    <div style={{ fontSize:"20px" }}>
+    <h1 style={{fontSize:"1rem"}}> Giving back:</h1>
+    <div style={{ fontSize:"1rem" }}>
             {Object.entries(userSelected).map(([key, value]) => (
                 <div key={key}>
                     {"$"}{key} = Count: {value}{" "}
@@ -218,7 +214,7 @@ export default function Exercise36() {
     <p style={{fontSize:"20px", color:"green"}} > Your Current balance adds upto ${compute} </p>
     <button style={{ color:"red", fontSize:'20px' }} onClick={clearAnswer}> reset your answer </button>
 
-      </div>
+    </div>
     
     )
 
