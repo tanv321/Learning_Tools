@@ -1,4 +1,4 @@
-import react, {useState} from 'react';
+import react, {useState, useEffect} from 'react';
 import { HorizontalBarrier } from './sharedComponents';
 
 
@@ -17,12 +17,14 @@ export default function Exercise36() {
     let [customerGives, setCustomerGives] = useState("");
     let [result, setResult] = useState("");
     let [showResults, setShowResults] = useState(false);
+    let [correctChange, setCorrectChange] = useState(0);
+    const [showCorrectChange, setShowCorrectChange] = useState(false);
 
 
 
     const startService = () => {
         setCompute(0.00);
-
+        setShowResults(false)
         setUserSelected({
             1: 0, 5: 0, 10: 0, 20:0, 50: 0, 100: 0,
             0.01: 0, 0.05: 0, 0.10: 0, 0.25: 0,
@@ -39,6 +41,12 @@ export default function Exercise36() {
     
     
     }
+
+
+    useEffect(() => {
+        let toGiveBack = customerGives - charged;
+        setCorrectChange(toGiveBack.toFixed(2));
+      }, [customerGives, charged]);
 
 
     const calculateChange = (charged, given) => {
@@ -68,6 +76,7 @@ export default function Exercise36() {
           });
 
         setCompute(0.00);
+        setShowResults(false)
 
     }
 
@@ -128,7 +137,7 @@ export default function Exercise36() {
                     trimmedValue = "0.05";
                     break;
                 case "10":
-                    trimmedValue = "0.10";
+                    trimmedValue = "0.1";
                     break;
                 case "25":
                     trimmedValue = "0.25";
@@ -141,7 +150,7 @@ export default function Exercise36() {
         }
         
         setUserSelected(prevDictionary => {
-            if (["1", "5", "10", "20", "50", "100", "0.01", "0.5", "0.10", "0.25"].includes(trimmedValue)) {
+            if (["1", "5", "10", "20", "50", "100", "0.01", "0.5", "0.1", "0.25"].includes(trimmedValue)) {
                 return {...prevDictionary, [trimmedValue]: (prevDictionary[trimmedValue] || 0) + 1};
             } else {
                 return prevDictionary;
@@ -151,6 +160,9 @@ export default function Exercise36() {
 
         }
 
+        const toggleCorrectChange = () => {
+            setShowCorrectChange(prevState => !prevState);
+          };
     
     return (
         
@@ -170,8 +182,11 @@ export default function Exercise36() {
       <br/>
       <h1 style={{ fontSize:'1rem' }}> Price: ${charged} <br/>
            Customer Gives: ${customerGives}  <br/>
-           What amount will you hand them back?
-        </h1>
+           {showCorrectChange && `Hand them back ${correctChange}`}
+      </h1>
+      <button onClick={toggleCorrectChange}>
+        {showCorrectChange ? 'Hide' : 'Show'} Correct Change
+      </button>
 
        {bills.map((row, rowIndex) => (
         <div style={{ fontSize:"1rem" }} key={rowIndex}>
