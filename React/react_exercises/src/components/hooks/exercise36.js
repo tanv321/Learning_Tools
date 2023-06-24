@@ -6,11 +6,11 @@ export default function Exercise36() {
  
     let [userSelected, setUserSelected] = useState({
          1: 0, 5: 0, 10: 0, 20:0, 50: 0, 100: 0,
-        0.01: 0, 0.5: 0, 0.10: 0, 0.25: 0,
+        0.01: 0, 0.05: 0, 0.10: 0, 0.25: 0,
     });
     let [toGive, setToGive] = useState({
         1: 0, 5: 0, 10: 0, 20:0, 50: 0, 100: 0,
-       0.01: 0, 0.5: 0, 0.10: 0, 0.25: 0,
+       0.01: 0, 0.05: 0, 0.10: 0, 0.25: 0,
    });
 
     let [charged, setCharged] = useState("")
@@ -38,7 +38,7 @@ export default function Exercise36() {
         let changeDue = given - charged;
         let changeToGive = {
             1: 0, 5: 0, 10: 0, 20:0, 50: 0, 100: 0,
-            0.01: 0, 0.5: 0, 0.10: 0, 0.25: 0,
+            0.01: 0, 0.05: 0, 0.10: 0, 0.25: 0,
         };
     
         denominations.forEach(denomination => {
@@ -55,7 +55,9 @@ export default function Exercise36() {
 
     const evalAnswer = () => {
         if (isEqual(toGive, userSelected)) {
+            console.log("Correct")
         }  else {
+            console.log("wrong check back")
             console.log(toGive, userSelected);
         }
     }
@@ -100,7 +102,7 @@ export default function Exercise36() {
                     trimmedValue = "0.01";
                     break;
                 case "5":
-                    trimmedValue = "0.5";
+                    trimmedValue = "0.05";
                     break;
                 case "10":
                     trimmedValue = "0.10";
@@ -119,7 +121,7 @@ export default function Exercise36() {
     
         setUserSelected(prevDictionary => {
             console.log("trimmedValue--->", trimmedValue, trimmedValue==="1", value_clicked);
-            if (["1", "5", "10", "20", "50", "100", "0.01", "0.1", "0.5", "0.10", "0.25"].includes(trimmedValue)) {
+            if (["1", "5", "10", "20", "50", "100", "0.01", "0.5", "0.10", "0.25"].includes(trimmedValue)) {
                 return {...prevDictionary, [trimmedValue]: (prevDictionary[trimmedValue] || 0) + 1};
             } else {
                 return prevDictionary;
