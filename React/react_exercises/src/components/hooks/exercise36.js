@@ -16,6 +16,8 @@ export default function Exercise36() {
     let [charged, setCharged] = useState("")
     let [customerGives, setCustomerGives] = useState("");
     let [result, setResult] = useState("");
+    let [showResults, setShowResults] = useState(false);
+
 
 
     const startService = () => {
@@ -35,7 +37,6 @@ export default function Exercise36() {
         const changeToGive = calculateChange(chargedFloat, customerGivesFloat);
         setToGive(changeToGive);
     
-        console.log(chargedFloat, "thissssss", customerGivesFloat, changeToGive);
     
     }
 
@@ -76,8 +77,9 @@ export default function Exercise36() {
             setResult("You got the Correct Answer!")
         }  else {
             setResult("Wrong answer...")
-            console.log(toGive, userSelected);
+            setShowResults(true)
         }
+
     }
 
 
@@ -116,7 +118,6 @@ export default function Exercise36() {
         if (value_clicked.startsWith("$")) {
             trimmedValue = value_clicked.substr(1, value_clicked.length-1);
             setCompute(prevState => prevState + parseFloat(trimmedValue));
-            // console.log(trimmedValue, "<----thiss is trimmedvalue", compute, typeof(trimmedValue));
         } else {
             trimmedValue = value_clicked.substr(0, value_clicked.length-6);
             switch (trimmedValue) {
@@ -133,17 +134,13 @@ export default function Exercise36() {
                     trimmedValue = "0.25";
                     break;
                 default:
-                    console.log(" error ")
                     break;
             }
             setCompute(prevState => parseFloat((prevState + parseFloat(trimmedValue)).toFixed(2)));
 
-            console.log(trimmedValue, "hmm", trimmedValue.length, trimmedValue===1, compute);
-
         }
         
         setUserSelected(prevDictionary => {
-            console.log("trimmedValue--->", trimmedValue, trimmedValue==="1", value_clicked);
             if (["1", "5", "10", "20", "50", "100", "0.01", "0.5", "0.10", "0.25"].includes(trimmedValue)) {
                 return {...prevDictionary, [trimmedValue]: (prevDictionary[trimmedValue] || 0) + 1};
             } else {
@@ -151,7 +148,6 @@ export default function Exercise36() {
             }
         });
         
-        console.log(value_clicked, userSelected);
 
         }
 
@@ -209,11 +205,20 @@ export default function Exercise36() {
         </div>
 
     <button style={{ color:"brown", fontSize:'70px' }} onClick={evalAnswer}> submit </button>
-    <p style={{ color:"pink", fontSize:"30px"}}>{result}</p>
+    <p style={{ color:"pink", fontSize:"30px"}}> {result}  </p>
+    {showResults && <div style={{ fontSize:"1rem", color:"green" }}>
+    The correct answer is : 
+    {Object.entries(toGive).map(([key, value]) => (
+        <div key={key}>
+            {"$"}{key} = Count: {value}{" "}
+        </div>
+    ))}
+</div>}
+
     
     <p style={{fontSize:"20px", color:"green"}} > Your Current balance adds upto ${compute} </p>
     <button style={{ color:"red", fontSize:'20px' }} onClick={clearAnswer}> reset your answer </button>
-
+        
     </div>
     
     )
