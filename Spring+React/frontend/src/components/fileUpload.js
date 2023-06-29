@@ -15,7 +15,11 @@ export default function FileUpload() {
         try {
             const response = await axios.post('http://localhost:8080/upload', formData);
             console.log(response.data);
+            console.log("we dont have an error")
+
+            
         } catch (error) {
+            console.log("we have an error")
             console.error('Error during file upload:', error);
         }
     };
